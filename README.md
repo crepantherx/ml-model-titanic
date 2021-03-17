@@ -1,5 +1,2 @@
-# CICD Demonstration
-## author @crepantherx
-
-### Intern, Tech Mahindra
+# Continious Integration & Deployment
 
