@@ -1,1 +1,1 @@
-# ml-model-titanic
+# CICD Demonstration
