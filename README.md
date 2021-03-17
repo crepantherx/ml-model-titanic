@@ -1,2 +1,2 @@
 # CICD Demonstration
-## by @crepantherx @utkarsh-srivastav
+## author @crepantherx
