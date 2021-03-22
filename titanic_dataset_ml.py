@@ -1,30 +1,31 @@
-import numpy as np
-import pandas as pd
-from sklearn import linear_model
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import Perceptron
-from sklearn.linear_model import SGDClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-
-
-
 def load_data(path):
+    import numpy as np
     import pandas as pd
-
-    # path = "data/"
-
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB      
     test_df = pd.read_csv(path + "test.csv")
     train_df = pd.read_csv(path + "train.csv")
     data = [train_df, test_df]
     return data
-
-
-
 def data_processing(data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     for dataset in data:
         dataset['relatives'] = dataset['SibSp'] + dataset['Parch']
         dataset.loc[dataset['relatives'] > 0, 'not_alone'] = 0
@@ -33,10 +34,18 @@ def data_processing(data):
     # train_df['not_alone'].value_counts()
     data[0] = data[0].drop(['PassengerId'], axis=1)
     return data
-
-
-
 def data_cleaning(data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     import re
     deck = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "U": 8}
 
@@ -50,10 +59,18 @@ def data_cleaning(data):
     data[0] = data[0].drop(['Cabin'], axis=1)
     data[1] = data[1].drop(['Cabin'], axis=1)
     return data
-
-
-
 def data_cleaning2(data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB         
     import numpy as np
 
     for dataset in data:
@@ -136,60 +153,115 @@ def data_cleaning2(data):
 
     train_df = data[1]
     return train_df
-
-
-
 def clean_data(train_df):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     train_labels = train_df['Survived']
     train_df = train_df.drop('Survived', axis=1)
 
     train_data = [train_df, train_labels]
     return train_data
-
-
-
 def random_forest1(train_data):
-    
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     random_forest = RandomForestClassifier(n_estimators=100)
     random_forest.fit(train_data[0], train_data[1])
     acc_random_forest = round(random_forest.score(train_data[0], train_data[1]) * 100, 2)
     return acc_random_forest
-
-
-
 def logreg1(train_data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB         
     logreg = LogisticRegression(solver='lbfgs', max_iter=110)
     logreg.fit(train_data[0], train_data[1])
     acc_log = round(logreg.score(train_data[0], train_data[1]) * 100, 2)
     return acc_log
-
-
-
 def gaussian1(train_data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     gaussian = GaussianNB()
     gaussian.fit(train_data[0], train_data[1])
     acc_gaussian = round(gaussian.score(train_data[0], train_data[1]) * 100, 2)
     return acc_gaussian
-
-
-
 def linear_svc1(train_data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     linear_svc = SVC(gamma='auto')
     linear_svc.fit(train_data[0], train_data[1])
     acc_linear_svc = round(linear_svc.score(train_data[0], train_data[1]) * 100, 2)
     return acc_linear_svc
-
-
-
 def decision_tree1(train_data):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     decision_tree = DecisionTreeClassifier()
     decision_tree.fit(train_data[0], train_data[1])
     acc_decision_tree = round(decision_tree.score(train_data[0], train_data[1]) * 100, 2)
     return acc_decision_tree
-
-
-
 def results1(acc_linear_svc, acc_log, acc_random_forest, acc_gaussian, acc_decision_tree):
+    import numpy as np
+    import pandas as pd
+    from sklearn import linear_model
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.linear_model import Perceptron
+    from sklearn.linear_model import SGDClassifier
+    from sklearn.tree import DecisionTreeClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.svm import SVC
+    from sklearn.naive_bayes import GaussianNB     
     results = pd.DataFrame({
         'Model': ['Support Vector Machines', 'logistic Regression',
                 'Random Forest', 'Naive Bayes', 'Decision Tree'],
