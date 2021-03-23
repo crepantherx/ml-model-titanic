@@ -1,5 +1,5 @@
 
-def load_data(path: str) -> arr:
+def load_data(path: str) -> list:
     import pandas as pd
 
     # path = "data/"
@@ -11,7 +11,7 @@ def load_data(path: str) -> arr:
 
 
 
-def data_processing(data: arr) -> arr:
+def data_processing(data: list) -> list:
     for dataset in data:
         dataset['relatives'] = dataset['SibSp'] + dataset['Parch']
         dataset.loc[dataset['relatives'] > 0, 'not_alone'] = 0
@@ -23,7 +23,7 @@ def data_processing(data: arr) -> arr:
 
 
 
-def data_cleaning(data: arr) -> arr:
+def data_cleaning(data: list) -> list:
     import re
     deck = {"A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "U": 8}
 
@@ -40,7 +40,7 @@ def data_cleaning(data: arr) -> arr:
 
 
 
-def data_cleaning2(data: arr) -> pandas.core.frame.DataFrame:
+def data_cleaning2(data: list) -> pandas.core.frame.DataFrame:
     import numpy as np
 
     for dataset in data:
@@ -126,7 +126,7 @@ def data_cleaning2(data: arr) -> pandas.core.frame.DataFrame:
 
 
 
-def clean_data(train_df: pandas.core.frame.DataFrame) -> arr:
+def clean_data(train_df: pandas.core.frame.DataFrame) -> list:
     train_labels = train_df['Survived']
     train_df = train_df.drop('Survived', axis=1)
 
@@ -135,7 +135,7 @@ def clean_data(train_df: pandas.core.frame.DataFrame) -> arr:
 
 
 
-def random_forest1(train_data: arr) -> numpy.float64:
+def random_forest1(train_data: list) -> numpy.float64:
 
     random_forest = RandomForestClassifier(n_estimators=100)
     random_forest.fit(train_data[0], train_data[1])
@@ -144,7 +144,7 @@ def random_forest1(train_data: arr) -> numpy.float64:
 
 
 
-def logreg1(train_data: arr) -> numpy.float64:
+def logreg1(train_data: list) -> numpy.float64:
     logreg = LogisticRegression(solver='lbfgs', max_iter=110)
     logreg.fit(train_data[0], train_data[1])
     acc_log = round(logreg.score(train_data[0], train_data[1]) * 100, 2)
@@ -152,7 +152,7 @@ def logreg1(train_data: arr) -> numpy.float64:
 
 
 
-def gaussian1(train_data: arr) -> numpy.float64:
+def gaussian1(train_data: list) -> numpy.float64:
     gaussian = GaussianNB()
     gaussian.fit(train_data[0], train_data[1])
     acc_gaussian = round(gaussian.score(train_data[0], train_data[1]) * 100, 2)
@@ -160,7 +160,7 @@ def gaussian1(train_data: arr) -> numpy.float64:
 
 
 
-def linear_svc1(train_data: arr) -> numpy.float64:
+def linear_svc1(train_data: list) -> numpy.float64:
     linear_svc = SVC(gamma='auto')
     linear_svc.fit(train_data[0], train_data[1])
     acc_linear_svc = round(linear_svc.score(train_data[0], train_data[1]) * 100, 2)
@@ -168,7 +168,7 @@ def linear_svc1(train_data: arr) -> numpy.float64:
 
 
 
-def decision_tree1(train_data: arr) -> numpy.float64:
+def decision_tree1(train_data: list) -> numpy.float64:
     decision_tree = DecisionTreeClassifier()
     decision_tree.fit(train_data[0], train_data[1])
     acc_decision_tree = round(decision_tree.score(train_data[0], train_data[1]) * 100, 2)
