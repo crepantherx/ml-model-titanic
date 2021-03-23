@@ -10,8 +10,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB      
 
-PREDICTION_LABEL = 'Survived'
+
 path = "data/"
+PREDICTION_LABEL = 'Survived'
 test_df = pd.read_csv(path + "test.csv")
 train_df = pd.read_csv(path + "train.csv")
 data = [train_df, test_df]
